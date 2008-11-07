@@ -1,0 +1,4 @@
+%h2 New post
+= render :partial => "form", :locals => {:post => @post}
+%ul
+  %li= link_to 'Back', posts_path

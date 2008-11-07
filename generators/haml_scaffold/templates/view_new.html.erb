@@ -1,0 +1,4 @@
+%h2 New <%= singular_name %>
+= render :partial => "form", :locals => {:<%= singular_name %> => @<%= singular_name %>}
+%ul
+  %li= link_to 'Back', <%= plural_name %>_path

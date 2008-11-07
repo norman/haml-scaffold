@@ -1,0 +1,5 @@
+%h2 Editing post
+= render :partial => "form", :locals => {:post => @post}
+%ul
+  %li= link_to 'Show', @post
+  %li= link_to 'Back', posts_path

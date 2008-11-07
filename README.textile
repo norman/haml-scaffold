@@ -1,0 +1,92 @@
+h1. Haml Scaffold
+
+A collection of hacks to the Rails scaffold generator, to make it output
+templates using HAML rather than ERB. You may like some of it, and may hate
+other parts. You're free to use it under the terms of the MIT license if the
+parts you like outweigh the parts you hate.
+
+This scaffold generator does the same thing as the default Rails scaffold
+generator, with a few differences.
+
+h2. Differences from Rails Scaffolding:
+
+* HAML not ERB.
+
+h3. Controller
+
+* Loads object with a before_filter to be DRYer.
+* Adds placeholder permission checking before_filters on all actions.
+* "Destroy" method handles error conditions.
+* Actions are alphabetized for more obvious consistency.
+
+h3. Controller Test
+
+* Tests error conditions, not just the "happy-path."
+* Has 100% code coverage with RCov.
+* Simplifies test method names and alphabetizes them for more obvious consistency.
+* Uses some very simple mocking with mocha to limit calls to the DB.
+
+h3. Views
+
+* Have cleaner, more semantic XHTML.
+* Are broken up into a couple of partials to be DRYer.
+* Use will_paginate.
+
+h3. Misc
+
+* Doesn't generate a layout or CSS file.
+
+h2. Samples
+
+"View them here.":http://github.com/norman/haml-scaffold/tree/master/samples
+
+h2. Installation
+
+There are three ways you can install this generator:
+
+h3. Gem
+
+@sudo gem install norman-haml_scaffold@
+
+- or -
+
+<code>
+<pre>
+git clone git://github.com/norman/haml-scaffold.git
+cd haml-scaffold
+gem build haml_scaffold.gemspec
+sudo gem install haml_scaffold-*.gem
+</pre>
+</code>
+
+h3. Manual
+
+Download the tarball from the Github repository and unarchive it in ~/.rails/generators.
+
+h3. Plugin
+
+@./script/plugin install git://github.com/norman/haml-scaffold.git@
+
+
+
+h2. Dependencies
+
+The generated code will depend on:
+
+* "will_paginate":http://github.com/mislav/will_paginate/
+* "mocha":http://mocha.rubyforge.org/
+
+You'll need to add the gems and or requires to your config/environment.rb
+manually.
+
+h2. Other stuff you might be interested in:
+
+* "RSpec HAML scaffold generator":http://github.com/dfischer/rspec-haml-scaffold-generator
+* "Randomba scaffold":https://github.com/norman/randomba-scaffold/tree (like this one, but ERB)
+
+h2. Author
+
+"Norman Clarke":mailto:norman@randomba.org
+
+This work is derived from code in "Ruby on Rails":http://rubyonrails.org/ and
+is released under its same license, the MIT License.

@@ -1,0 +1,15 @@
+%h2= "Post \"#{@post.to_param}\""
+= content_tag_for :div, @post do
+  %ul
+    %li
+      %strong Title:
+      =h @post.title
+    %li
+      %strong Author:
+      =h @post.author
+    %li
+      %strong Content:
+      =h @post.content
+%ul
+  %li= link_to 'Edit', edit_post_path(@post)
+  %li= link_to 'Back', posts_path

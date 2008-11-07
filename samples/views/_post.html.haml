@@ -1,0 +1,14 @@
+= content_tag_for :div, post do
+  %ul
+    %li
+      %strong Title:
+      =h post.title
+    %li
+      %strong Author:
+      =h post.author
+    %li
+      %strong Content:
+      =h post.content
+    = link_to 'Show', post
+    = link_to 'Edit', edit_post_path(post)
+    = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete

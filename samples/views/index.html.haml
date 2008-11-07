@@ -1,0 +1,8 @@
+%h2 Listing posts
+- if !@posts.empty?
+  .posts
+    = render :partial => "post", :collection => @posts
+  = will_paginate(@posts)
+- else
+  %p There are no posts to show yet.
+= link_to 'New post', new_post_path
