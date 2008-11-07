@@ -1,7 +1,7 @@
 h1. Haml Scaffold
 
 A collection of hacks to the Rails scaffold generator, to make it output
-templates using HAML rather than ERB. You may like some of it, and may hate
+templates using Haml rather than ERB. You may like some of it, and may hate
 other parts. You're free to use it under the terms of the MIT license if the
 parts you like outweigh the parts you hate.
 
@@ -10,14 +10,14 @@ generator, with a few differences.
 
 h2. Differences from Rails Scaffolding:
 
-* HAML not ERB.
+* Haml not ERB.
 
 h3. Controller
 
 * Loads object with a before_filter to be DRYer.
-* Adds placeholder permission checking before_filters on all actions.
 * "Destroy" method handles error conditions.
 * Actions are alphabetized for more obvious consistency.
+* Uses will_paginate.
 
 h3. Controller Test
 
@@ -46,7 +46,7 @@ There are three ways you can install this generator:
 
 h3. Gem
 
-@sudo gem install norman-haml_scaffold@
+@sudo gem install norman-haml_scaffold --source http://gems.github.com@
 
 - or -
 
@@ -63,11 +63,9 @@ h3. Manual
 
 Download the tarball from the Github repository and unarchive it in ~/.rails/generators.
 
-h3. Plugin
+h3. Rails Plugin
 
 @./script/plugin install git://github.com/norman/haml-scaffold.git@
-
-
 
 h2. Dependencies
 
@@ -76,12 +74,13 @@ The generated code will depend on:
 * "will_paginate":http://github.com/mislav/will_paginate/
 * "mocha":http://mocha.rubyforge.org/
 
-You'll need to add the gems and or requires to your config/environment.rb
+You'll need to add the gems and/or requires to your config/environment.rb
 manually.
 
 h2. Other stuff you might be interested in:
 
-* "RSpec HAML scaffold generator":http://github.com/dfischer/rspec-haml-scaffold-generator
+* "Haml":http://haml.hamptoncatlin.com/
+* "RSpec Haml scaffold generator":http://github.com/dfischer/rspec-haml-scaffold-generator
 * "Randomba scaffold":https://github.com/norman/randomba-scaffold/tree (like this one, but ERB)
 
 h2. Author
