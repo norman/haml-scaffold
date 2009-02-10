@@ -42,24 +42,11 @@ generator, with a few differences.
 
 == Installation
 
-There are three ways you can install this generator:
+HAML Scaffold is available on RubyForge as a gem:
 
-=== Gem
+  sudo gem install haml-scaffold
 
-  sudo gem install norman-haml_scaffold --source http://gems.github.com
-
-or
-
-  git clone git://github.com/norman/haml-scaffold.git
-  cd haml-scaffold
-  gem build haml_scaffold.gemspec
-  sudo gem install haml_scaffold-*.gem
-
-=== Manual
-
-Download the tarball from the Github repository and unarchive it in ~/.rails/generators.
-
-=== Rails Plugin
+You can also install it as a Rails plugin if you wish:
 
   ./script/plugin install git://github.com/norman/haml-scaffold.git
 
