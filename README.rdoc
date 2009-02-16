@@ -44,7 +44,7 @@ generator, with a few differences.
 
 HAML Scaffold is available on RubyForge as a gem:
 
-  sudo gem install haml-scaffold
+  sudo gem install haml_scaffold
 
 You can also install it as a Rails plugin if you wish:
 
