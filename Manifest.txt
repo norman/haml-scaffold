@@ -10,6 +10,7 @@ generators/haml_scaffold/templates/_object.html.erb
 generators/haml_scaffold/templates/controller.rb
 generators/haml_scaffold/templates/functional_test.rb
 generators/haml_scaffold/templates/helper.rb
+generators/haml_scaffold/templates/helper_test.rb
 generators/haml_scaffold/templates/view_edit.html.erb
 generators/haml_scaffold/templates/view_index.html.erb
 generators/haml_scaffold/templates/view_new.html.erb

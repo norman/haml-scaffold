@@ -13,7 +13,6 @@ $hoe = Hoe.new("haml_scaffold", HamlScaffold::Version::STRING) do |p|
   p.extra_dev_deps << ['newgem', ">= #{::Newgem::VERSION}"]
   p.remote_rdoc_dir = "/"
 end
-puts $hoe.inspect
 require 'newgem/tasks'
 
 desc 'Publish RDoc to RubyForge.'
