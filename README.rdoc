@@ -21,20 +21,19 @@ generator, with a few differences.
 
 === Controller Test
 
-* Tests error conditions, not just the "happy-path."
+* Tests error conditions, not just the "happy path."
 * Has 100% code coverage with RCov.
-* Simplifies test method names and alphabetizes them for more obvious consistency.
-* Uses some very simple mocking with mocha to limit calls to the DB.
+* Uses very simple mocking with mocha to limit calls to the DB.
 
 === Views
 
-* Have cleaner, more semantic XHTML.
+* Have cleaner, more semantic XHTML that's easier to quickly replace with your own markup.
 * Are broken up into a couple of partials to be DRYer.
 * Use will_paginate.
 
 === Misc
 
-* Doesn't generate a layout or CSS file.
+* Generates Haml layout and SASS stylesheet.
 
 == Samples
 
@@ -42,7 +41,7 @@ generator, with a few differences.
 
 == Installation
 
-HAML Scaffold is available on RubyForge as a gem:
+Haml Scaffold is available on RubyForge as a gem:
 
   sudo gem install haml_scaffold
 
@@ -54,21 +53,30 @@ You can also install it as a Rails plugin if you wish:
 
 The generated code will depend on:
 
+* haml[http://haml.hamptoncatlin.com/] (of course!)
 * will_paginate[http://github.com/mislav/will_paginate/]
 * mocha[http://mocha.rubyforge.org/]
 
-You'll need to add the gems and/or requires to your config/environment.rb
-manually.
+You'll need to add the gem dependencies to your config/environment.rb
+manually:
+
+  config.gem "haml"
+  config.gem "will_paginate"
+  config.gem "mocha"
+
+Also, don't forget to Hamlize your Rails app:
+
+  $ cd my_rails_app
+  $ haml --rails .
 
 == Other stuff you might be interested in:
 
 * Haml[http://haml.hamptoncatlin.com/]
 * {RSpec Haml scaffold generator}[http://github.com/dfischer/rspec-haml-scaffold-generator]
-* {Randomba scaffold}[https://github.com/norman/randomba-scaffold/tree] (like this one, but ERB)
 
 == Author
 
-{Norman Clarke}[mailto:norman@randomba.org]
+{Norman Clarke}[mailto:norman@njclarke.com]
 
 This work is derived from code in {Ruby on Rails}[http://rubyonrails.org/] and
 is released under its same license, the MIT License.

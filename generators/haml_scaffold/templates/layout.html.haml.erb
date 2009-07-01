@@ -1,0 +1,21 @@
+!!! XML
+!!!
+%html{ :'xml:lang' => "en", :lang => "en" }
+  %head
+    %title= "#{controller.class.to_s}: #{controller.action_name}"
+    %meta{ :"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8" }
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
+    = stylesheet_link_tag "application", :media => "screen"
+    = javascript_include_tag :defaults
+  %body
+    #wrapper
+      #content
+        %h1 <%= application_name %>
+        #flash
+          - unless flash.empty?
+            = content_tag :div, flash[:notice],  :class => "notice"  if flash[:notice]
+            = content_tag :div, flash[:warning], :class => "warning" if flash[:warning]
+            = content_tag :div, flash[:error],   :class => "error"   if flash[:error]
+          :javascript
+            #{visual_effect :highlight, "flash"}
+        = yield

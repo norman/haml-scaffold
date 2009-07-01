@@ -3,3 +3,4 @@
 %ul
   %li= link_to 'Show', @<%= singular_name %>
   %li= link_to 'Back', <%= plural_name %>_path
+  %li= link_to 'Destroy', @<%= singular_name %>, :confirm => 'Are you sure?', :method => :delete  

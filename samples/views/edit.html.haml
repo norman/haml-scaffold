@@ -3,3 +3,4 @@
 %ul
   %li= link_to 'Show', @post
   %li= link_to 'Back', posts_path
+  %li= link_to 'Destroy', @post, :confirm => 'Are you sure?', :method => :delete  

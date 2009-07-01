@@ -9,23 +9,24 @@ class HamlScaffoldGenerator < Rails::Generator::NamedBase
                 :controller_class_name,
                 :controller_underscore_name,
                 :controller_singular_name,
-                :controller_plural_name
+                :controller_plural_name,
+                :application_name
   alias_method  :controller_file_name,  :controller_underscore_name
   alias_method  :controller_table_name, :controller_plural_name
 
   def initialize(runtime_args, runtime_options = {})
     super
-
+    
     if @name == @name.pluralize && !options[:force_plural]
       logger.warning "Plural version of the model detected, using singularized version.  Override with --force-plural."
       @name = @name.singularize
     end
 
     @controller_name = @name.pluralize
-
+    @application_name = File.basename(Rails.root.to_s).humanize
     base_name, @controller_class_path, @controller_file_path, @controller_class_nesting, @controller_class_nesting_depth = extract_modules(@controller_name)
     @controller_class_name_without_nesting, @controller_underscore_name, @controller_plural_name = inflect_names(base_name)
-    @controller_singular_name=base_name.singularize
+    @controller_singular_name = base_name.singularize
     if @controller_class_nesting.empty?
       @controller_class_name = @controller_class_name_without_nesting
     else
@@ -50,34 +51,24 @@ class HamlScaffoldGenerator < Rails::Generator::NamedBase
       m.directory(File.join('test/unit/helpers', class_path))
 
       for action in scaffold_views
-        m.template(
-          "view_#{action}.html.erb",
-          File.join('app/views', controller_class_path, controller_file_name, "#{action}.html.haml")
-        )
+        m.template("view_#{action}.html.haml.erb", File.join('app/views', controller_class_path, controller_file_name, "#{action}.html.haml"))
       end
 
-      m.template(
-        "_form.html.erb",
-          File.join('app/views', controller_class_path, controller_file_name, "_form.html.haml")
-      )
-
-      m.template(
-        "_object.html.erb",
-          File.join('app/views', controller_class_path, controller_file_name, "_#{name}.html.haml")
-      )
-
-      m.template(
-        'controller.rb', File.join('app/controllers', controller_class_path, "#{controller_file_name}_controller.rb")
-      )
-
-      m.template('functional_test.rb', File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
-      m.template('helper.rb',          File.join('app/helpers',     controller_class_path, "#{controller_file_name}_helper.rb"))
-      m.template('helper_test.rb',     File.join('test/unit/helpers',    controller_class_path, "#{controller_file_name}_helper_test.rb"))
-
+      m.template("_form.html.haml.erb", File.join('app/views', controller_class_path, controller_file_name, "_form.html.haml"))
+      m.template("_object.html.haml.erb", File.join('app/views', controller_class_path, controller_file_name, "_#{name}.html.haml"))
+      m.template('controller.rb.erb', File.join('app/controllers', controller_class_path, "#{controller_file_name}_controller.rb"))
+      m.template('functional_test.rb.erb', File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
+      m.template('helper.rb.erb',          File.join('app/helpers',     controller_class_path, "#{controller_file_name}_helper.rb"))
+      m.template('helper_test.rb.erb',     File.join('test/unit/helpers',    controller_class_path, "#{controller_file_name}_helper_test.rb"))
+      m.directory('app/views/layouts')
+      m.directory('public/stylesheets/sass')
+      m.template('layout.html.haml.erb', 'app/views/layouts/application.html.haml', :collision => :skip, :assigns => {:application_name => @application_name})
+      m.template('stylesheet.sass', 'public/stylesheets/sass/application.sass', :collision => :skip)
       m.route_resources controller_file_name
-
       m.dependency 'model', [name] + @args, :collision => :skip
+
     end
+  
   end
 
   protected

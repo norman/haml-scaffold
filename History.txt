@@ -1,3 +1,11 @@
+=== 1.1.0 / 2009-07-30
+
+* 3 major enhancements
+
+  * Upated generator code to Rails 2.3.2.
+  * Haml Scaffold now generates layout and a SASS stylesheet.
+  * Tests now use 'test "name" do' syntax.
+
 === 1.0.0 / 2009-02-10
 
 * 1 major enhancement
