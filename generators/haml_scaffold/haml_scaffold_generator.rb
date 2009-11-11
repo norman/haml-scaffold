@@ -74,7 +74,7 @@ class HamlScaffoldGenerator < Rails::Generator::NamedBase
   protected
     # Override with your own usage banner.
     def banner
-      "Usage: #{$0} scaffold ModelName [field:type, field:type]"
+      "Usage: #{$0} haml_scaffold ModelName [field:type, field:type]"
     end
 
     def add_options!(opt)
